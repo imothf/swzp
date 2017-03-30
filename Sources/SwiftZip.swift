@@ -99,7 +99,7 @@ public class SwiftZip {
                     try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
                 }
                 else {
-                    let parentDirectory = (fullPath as NSString).deletingLastPathComponent
+                    let parentDirectory = NSString(string:fullPath).deletingLastPathComponent
                     try fileManager.createDirectory(atPath: parentDirectory, withIntermediateDirectories: true, attributes: directoryAttributes)
                 }
             } catch {}
