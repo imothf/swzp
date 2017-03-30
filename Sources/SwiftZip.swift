@@ -92,8 +92,8 @@ public class SwiftZip {
             let fullPath = destination.appendingPathComponent(pathString).path
             
             let creationDate = Date()
-            let directoryAttributes = [FileAttributeKey.creationDate.rawValue : creationDate,
-                                       FileAttributeKey.modificationDate.rawValue : creationDate]
+            let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
+                                       FileAttributeKey.modificationDate : creationDate]
             do {
                 if isDirectory {
                     try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
