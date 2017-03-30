@@ -2,12 +2,12 @@ import Foundation
 import minizip
 
 
-enum UnzipError: Error {
+public enum UnzipError: Error {
     case fileNotFound
     case fail
 }
 
-class SwiftZip {
+public class SwiftZip {
     
     /**
      Set of vaild file extensions
