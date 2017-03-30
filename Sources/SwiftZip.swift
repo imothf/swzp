@@ -21,7 +21,7 @@ public class SwiftZip {
         // Check whether a zip file exists at path.
         let path = zipFilePath.path
         
-        if fileManager.fileExists(atPath: path) == false || fileExtensionIsInvalid(zipFilePath.pathExtension) {
+        if fileManager.fileExists(atPath: path) == false {
             throw UnzipError.fileNotFound
         }
         
@@ -144,50 +144,5 @@ public class SwiftZip {
         } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
         
         
-    }
-    /**
-     Check if file extension is invalid.
-     
-     - parameter fileExtension: A file extension.
-     
-     - returns: false if the extension is a valid file extension, otherwise true.
-     */
-    internal class func fileExtensionIsInvalid(_ fileExtension: String?) -> Bool {
-        
-        guard let fileExtension = fileExtension else { return true }
-        
-        return !isValidFileExtension(fileExtension)
-    }
-    
-    /**
-     Add a file extension to the set of custom file extensions
-     
-     - parameter fileExtension: A file extension.
-     */
-    public class func addCustomFileExtension(_ fileExtension: String) {
-        customFileExtensions.insert(fileExtension)
-    }
-    
-    /**
-     Remove a file extension from the set of custom file extensions
-     
-     - parameter fileExtension: A file extension.
-     */
-    public class func removeCustomFileExtension(_ fileExtension: String) {
-        customFileExtensions.remove(fileExtension)
-    }
-    
-    /**
-     Check if a specific file extension is valid
-     
-     - parameter fileExtension: A file extension.
-     
-     - returns: true if the extension valid, otherwise false.
-     */
-    public class func isValidFileExtension(_ fileExtension: String) -> Bool {
-        
-        let validFileExtensions: Set<String> = customFileExtensions.union(["zip", "cbz"])
-        
-        return validFileExtensions.contains(fileExtension)
     }
 }
